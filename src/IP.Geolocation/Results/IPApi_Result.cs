@@ -5,9 +5,9 @@ namespace IP.Geolocation.Results;
 
 internal class IPApi_Result : IIPGeolocationResult
 {
-	//http://ip-api.com/json/167.250.0.38?fields=status,message,country,countryCode,regionName,city,zip,lat,lon,timezone,isp,org,mobile
+    //http://ip-api.com/json/167.250.0.38?fields=status,message,country,countryCode,regionName,city,zip,lat,lon,timezone,isp,org,mobile
 
-	/* {
+    /* {
             "city":"Belo Horizonte",
             "country":"Brazil",
             "countryCode":"BR",
@@ -22,86 +22,86 @@ internal class IPApi_Result : IIPGeolocationResult
             "zip":"30000"
             } */
 
-	private readonly IPApi_Return geo_Return;
+    private readonly IPApi_Return geo_Return;
 
-	public IPApi_Result(IPApi_Return objReturn)
-	{
-		geo_Return = objReturn;
-	}
+    public IPApi_Result(IPApi_Return objReturn)
+    {
+        geo_Return = objReturn;
+    }
 
 
-	public string City
-	{
-		get { return geo_Return.city; }
-	}
+    public string City
+    {
+        get { return geo_Return.city; }
+    }
 
-	public string Country
-	{
-		get { return geo_Return.country; }
-	}
+    public string Country
+    {
+        get { return geo_Return.country; }
+    }
 
-	public string CountryCode
-	{
-		get { return geo_Return.countryCode; }
-	}
+    public string CountryCode
+    {
+        get { return geo_Return.countryCode; }
+    }
 
-	public string ISP
-	{
-		get { return geo_Return.isp; }
-	}
+    public string ISP
+    {
+        get { return geo_Return.isp; }
+    }
 
-	public DateTime? LastQuery
-	{
-		get { return geo_Return.LastQuery; }
-	}
+    public DateTime? LastQuery
+    {
+        get { return geo_Return.LastQuery; }
+    }
 
-	public string Latitude
-	{
-		get { return geo_Return.lat; }
-	}
+    public string Latitude
+    {
+        get { return geo_Return.lat; }
+    }
 
-	public string Longitude
-	{
-		get { return geo_Return.lon; }
-	}
+    public string Longitude
+    {
+        get { return geo_Return.lon; }
+    }
 
-	public bool? Mobile
-	{
-		get { return geo_Return.mobile; }
-	}
+    public bool? Mobile
+    {
+        get { return geo_Return.mobile; }
+    }
 
-	public string Org
-	{
-		get { return geo_Return.org; }
-	}
+    public string Org
+    {
+        get { return geo_Return.org; }
+    }
 
-	public string Others
-	{
-		get { return string.Empty; }
-	}
+    public string Others
+    {
+        get { return string.Empty; }
+    }
 
-	public string Othres
-	{
-		get { return string.Empty; }
-	}
+    public string Othres
+    {
+        get { return string.Empty; }
+    }
 
-	public string State
-	{
-		get { return geo_Return.regionName; }
-	}
+    public string State
+    {
+        get { return geo_Return.regionName; }
+    }
 
-	public string Status
-	{
-		get { return geo_Return.status; }
-	}
+    public string Status
+    {
+        get { return geo_Return.status; }
+    }
 
-	public string Timezone
-	{
-		get { return geo_Return.timezone; }
-	}
+    public string Timezone
+    {
+        get { return geo_Return.timezone; }
+    }
 
-	public string Zip
-	{
-		get { return geo_Return.zip; }
-	}
+    public string Zip
+    {
+        get { return geo_Return.zip; }
+    }
 }

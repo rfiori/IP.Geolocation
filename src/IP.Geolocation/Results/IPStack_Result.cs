@@ -5,9 +5,9 @@ namespace IP.Geolocation.Results;
 
 internal class IPStack_Result : IIPGeolocationResult
 {
-	// http://api.ipstack.com/167.250.0.38?access_key=d6eaff542aa81fd46f8df439161427cb
+    // http://api.ipstack.com/167.250.0.38?access_key=d6eaff542aa81fd46f8df439161427cb
 
-	/*
+    /*
            {
             "ip":"167.250.0.38",
             "type":"ipv4",
@@ -41,81 +41,81 @@ internal class IPStack_Result : IIPGeolocationResult
             }
         */
 
-	private readonly IPStack_Return geo_Return;
+    private readonly IPStack_Return geo_Return;
 
-	public IPStack_Result(IPStack_Return ipstack_Return)
-	{
-		geo_Return = ipstack_Return;
-	}
+    public IPStack_Result(IPStack_Return ipstack_Return)
+    {
+        geo_Return = ipstack_Return;
+    }
 
 
-	public string Status
-	{
-		get { return string.Empty; }
-	}
+    public string Status
+    {
+        get { return string.Empty; }
+    }
 
-	public DateTime? LastQuery
-	{
-		get { return geo_Return.LastQuery; }
-	}
+    public DateTime? LastQuery
+    {
+        get { return geo_Return.LastQuery; }
+    }
 
-	public string Country
-	{
-		get { return geo_Return.country_name; }
-	}
+    public string Country
+    {
+        get { return geo_Return.country_name; }
+    }
 
-	public string CountryCode
-	{
-		get { return geo_Return.country_code; }
-	}
+    public string CountryCode
+    {
+        get { return geo_Return.country_code; }
+    }
 
-	public string State
-	{
-		get { return $"{geo_Return.region_name} - {geo_Return.region_code}"; }
-	}
+    public string State
+    {
+        get { return $"{geo_Return.region_name} - {geo_Return.region_code}"; }
+    }
 
-	public string City
-	{
-		get { return geo_Return.city; }
-	}
+    public string City
+    {
+        get { return geo_Return.city; }
+    }
 
-	public string Zip
-	{
-		get { return geo_Return.zip; }
-	}
+    public string Zip
+    {
+        get { return geo_Return.zip; }
+    }
 
-	public string Latitude
-	{
-		get { return geo_Return.latitude; }
-	}
+    public string Latitude
+    {
+        get { return geo_Return.latitude; }
+    }
 
-	public string Longitude
-	{
-		get { return geo_Return.longitude; }
-	}
+    public string Longitude
+    {
+        get { return geo_Return.longitude; }
+    }
 
-	public string Timezone
-	{
-		get { return string.Empty; }
-	}
+    public string Timezone
+    {
+        get { return string.Empty; }
+    }
 
-	public string ISP
-	{
-		get { return string.Empty; }
-	}
+    public string ISP
+    {
+        get { return string.Empty; }
+    }
 
-	public string Org
-	{
-		get { return string.Empty; }
-	}
+    public string Org
+    {
+        get { return string.Empty; }
+    }
 
-	public bool? Mobile
-	{
-		get { return null; }
-	}
+    public bool? Mobile
+    {
+        get { return null; }
+    }
 
-	public string Others
-	{
-		get { return $"IP: {geo_Return.ip}"; }
-	}
+    public string Others
+    {
+        get { return $"IP: {geo_Return.ip}"; }
+    }
 }
