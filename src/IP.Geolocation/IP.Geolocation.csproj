@@ -14,6 +14,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Results\Geoplugin_Result.cs" />
+	  <Compile Remove="Results\IPApi_Result.cs" />
+	  <Compile Remove="Results\IPStack_Result.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Include="..\..\LICENSE">
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>

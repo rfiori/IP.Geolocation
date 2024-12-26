@@ -1,41 +1,57 @@
 ﻿using IP.Geolocation.Interfaces;
-using IP.Geolocation.Results;
+using System.Net;
+using System.Text.Json.Serialization;
 
 namespace IP.Geolocation;
 
-internal class Geoplugin_Return
+internal class Geoplugin_Return : IIPGeolocationResult
 {
 #pragma warning disable IDE1006 // Naming Styles
+	[JsonPropertyName("geoplugin_status")]
+	public dynamic? Status { get; set; }
 
-	public string? geoplugin_request { get; set; }
-	public string? geoplugin_status { get; set; }
-	public string? geoplugin_delay { get; set; }
-	public string? geoplugin_city { get; set; }
-	public string? geoplugin_region { get; set; }
-	public string? geoplugin_regionCode { get; set; }
-	public string? geoplugin_regionName { get; set; }
-	public string? geoplugin_areaCode { get; set; }
+	[JsonPropertyName("geoplugin_city")]
+	public string? City { get; set; }
+
+	[JsonPropertyName("geoplugin_regionName")]
+	public string? State { get; set; }
+
+	[JsonPropertyName("geoplugin_regionCode")]
+	public string? CountryCode { get; set; }
+
+	[JsonPropertyName("geoplugin_countryName")]
+	public string? Country { get; set; }
+
+	//public string? geoplugin_areaCode { get; set; }
 	//public string geoplugin_dmaCode { get; set; }
-	public string? geoplugin_countryCode { get; set; }
-	public string? geoplugin_countryName { get; set; }
+	//public string? geoplugin_countryCode { get; set; }
 	//public string geoplugin_inEU { get; set; }
 	//public string geoplugin_euVATrate { get; set; }
 	//public string geoplugin_continentCode { get; set; }
-	public string? geoplugin_continentName { get; set; }
-	public string? geoplugin_latitude { get; set; }
-	public string? geoplugin_longitude { get; set; }
-	public string? geoplugin_locationAccuracyRadius { get; set; }
-	public string? geoplugin_timezone { get; set; }
-	public string? geoplugin_currencyCode { get; set; }
-	public string? geoplugin_currencySymbol { get; set; }
-	public string? geoplugin_currencySymbol_UTF8 { get; set; }
-	public string? geoplugin_currencyConverter { get; set; }
+	//public string? geoplugin_continentName { get; set; }
+
+	[JsonPropertyName("geoplugin_latitude")]
+	public dynamic? Latitude { get; set; }
+
+	[JsonPropertyName("geoplugin_longitude")]
+	public dynamic? Longitude { get; set; }
+
+	//public string? geoplugin_locationAccuracyRadius { get; set; }
+
+	[JsonPropertyName("geoplugin_timezone")]
+	public string? Timezone { get; set; }
+
+	//public string? geoplugin_currencyCode { get; set; }
+	//public string? geoplugin_currencySymbol { get; set; }
+	//public string? geoplugin_currencySymbol_UTF8 { get; set; }
+	//public string? geoplugin_currencyConverter { get; set; }
 	public DateTime? LastQuery { get; set; }
 
-#pragma warning restore IDE1006 // Naming Styles
+	public string? Zip { get; set; }
+	public string? ISP { get; set; }
+	public string? Org { get; set; }
+	public bool? Mobile { get; set; }
+	public string? Others { get; set; }
 
-	public IIPGeolocationResult Result()
-	{
-		return new Geoplugin_Result(this);
-	}
+#pragma warning restore IDE1006 // Naming Styles
 }

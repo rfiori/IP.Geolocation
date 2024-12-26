@@ -2,31 +2,31 @@
 
 public interface IIPGeolocationResult
 {
-	string Status { get; }
+    public dynamic? Status { get; }
 
-	DateTime? LastQuery { get; }
+    public DateTime? LastQuery { get; }
 
-	string Country { get; }
+    public string? Country { get; }
 
-	string CountryCode { get; }
+    public string? CountryCode { get; }
 
-	string State { get; }
+    public string? State { get; }
 
-	string City { get; }
+    public string? City { get; }
 
-	string Zip { get; }
+    public string? Zip { get; }
 
-	string Latitude { get; }
+    public dynamic? Latitude { get; }
 
-	string Longitude { get; }
+    public dynamic? Longitude { get; }
 
-	string Timezone { get; }
+    public string? Timezone { get; }
 
-	string ISP { get; }
+    public string? ISP { get; }
 
-	string Org { get; }
+    public string? Org { get; }
 
-	bool? Mobile { get; }
+    public bool? Mobile { get; }
 
-	string Others { get; }
+    public string? Others { get; }
 }
