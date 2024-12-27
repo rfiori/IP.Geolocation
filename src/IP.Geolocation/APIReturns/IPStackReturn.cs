@@ -3,7 +3,7 @@ using IP.Geolocation.Results;
 
 namespace IP.Geolocation.APIReturns;
 
-internal class IPStack_Return : IIPGeolocationResult
+internal class IPStackReturn : IIPGeolocationResult
 {
     public string? ip { get; set; }
     public DateTime? LastQuery { get; set; }

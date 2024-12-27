@@ -28,14 +28,15 @@ public partial class FindIP
             return new IPGeoLocationResult() { Status = $"IP:{ip} Not detect" };
 
         // Get Geo Location info
-        var retAPI = await Get_IPAPI_Async(ip, timeOut); // 1th Try
+        var retAPI = await Get_IPAPI_Async(ip, timeOut);   // 1th Try
 
         if (!ConfirmDataRequest(retAPI))
-        {
             retAPI = await getFromGeopluginAsync(ip, timeOut); // 2th Try
-            //if (!ConfirmDataRequest(retAPI))
-            //    ret_IPAPI = getFromIPStack(ip, "d6eaff542aa81fd46f8df439161427cb", timeOut); // 3th Try
-        }
+
+//        if (!ConfirmDataRequest(retAPI))
+//            retAPI = await getFromGeopluginAsync(ip, timeOut); // 3th Try
+//                ret_IPAPI = getFromIPStack(ip, "d6eaff542aa81fd46f8df439161427cb", timeOut); // 3th Try
+        
         return retAPI;
     }
 
@@ -43,18 +44,17 @@ public partial class FindIP
 
     private static bool ConfirmDataRequest(IIPGeolocationResult? geoResult)
     {
-        return false;
-        var ret = true;
-        if (geoResult == null || string.IsNullOrEmpty(geoResult!.State) || string.IsNullOrEmpty(geoResult.City))
-            ret = false;
-        return ret;
+        if (geoResult == null || string.IsNullOrEmpty(geoResult!.State) || string.IsNullOrEmpty(geoResult.Country))
+            return false;
+
+        return true;
     }
 
     //------------------------------------------------------------------------//
 
     private static async Task<string?> CallAPI(string apiUrl, string ip)
     {
-        var client = new HttpClient();
+        using var client = new HttpClient();
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         client.Timeout = new TimeSpan(0, 0, TIMEOUT_SEC);
         try
@@ -65,25 +65,6 @@ public partial class FindIP
             {
                 var content = await request.Content.ReadAsStringAsync();
                 return content;
-            }
-            else
-                return null;
-        }
-        catch { return null; }
-    }
-
-    private static async Task<IIPGeolocationResult?> getFromGeopluginAsync(string ip, int timeOut = TIMEOUT_MILESSEC)
-    {
-        //--- site http://www.geoplugin.net
-        const string API_Geoplugin_URL = "http://geoplugin.net/json.gp?ip=";
-
-        try
-        {
-            var content = await CallAPI(API_Geoplugin_URL, ip);
-            if (!string.IsNullOrEmpty(content))
-            {
-                var geoP_ret = JsonSerializer.Deserialize<Geoplugin_Return>(content);
-                return geoP_ret;
             }
             else
                 return null;
@@ -109,7 +90,7 @@ public partial class FindIP
                     if (response.IsSuccessStatusCode)
                     {
                         var dataObjects = response.Content.ReadAsStringAsync().Result;
-                        var ret = JsonSerializer.Deserialize<IPStack_Return>(dataObjects);
+                        var ret = JsonSerializer.Deserialize<IPStackReturn>(dataObjects);
                         ret.LastQuery = DateTime.Now;
                         return ret;
                     }

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace IP.Geolocation.APIReturns;
 
-internal class IPApi_Return : IIPGeolocationResult
+internal class IPApiReturn : IIPGeolocationResult
 {
 #pragma warning disable IDE1006 // Naming Styles
 
@@ -50,9 +50,4 @@ internal class IPApi_Return : IIPGeolocationResult
     public string? Others { get; set; }
 
 #pragma warning restore IDE1006 // Naming Styles
-
-    //public IIPGeolocationResult Result()
-    //{
-    //    return new IPApi_Result(this);
-    //}
 }

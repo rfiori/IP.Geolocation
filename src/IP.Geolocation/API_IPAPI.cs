@@ -17,7 +17,7 @@ namespace IP.Geolocation
                 var content = await CallAPI(API_IpApi_URL, ip);
                 if (!string.IsNullOrEmpty(content))
                 {
-                    var IpApi_ret = JsonSerializer.Deserialize<IPApi_Return>(content);
+                    var IpApi_ret = JsonSerializer.Deserialize<IPApiReturn>(content);
                     return IpApi_ret;
                 }
                 else { return null; }
