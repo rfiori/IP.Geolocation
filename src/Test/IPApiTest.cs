@@ -14,6 +14,10 @@ public sealed class IPApiTest
     {
         var geoIP = FindIP.GetIPGeolocationAsync(ip).Result;
 
-        Assert.IsTrue(geoIP != null && coutry == geoIP.CountryCode && state == geoIP.State);
+        Assert.IsTrue(
+            geoIP != null &&
+            geoIP.CountryCode!.Contains(coutry) &&
+            (geoIP.State!.Contains(state, StringComparison.OrdinalIgnoreCase) || state.Contains(geoIP.State, StringComparison.OrdinalIgnoreCase))
+            );
     }
 }

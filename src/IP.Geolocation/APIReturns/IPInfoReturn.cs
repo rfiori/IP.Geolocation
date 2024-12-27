@@ -6,60 +6,56 @@ namespace IP.Geolocation.APIReturns;
 /*
  * Exemple api return
  * 
-{
-	"status":"success",
-	"country":"Brazil",
-	"countryCode":"BR",
-	"region":"MG",
-	"regionName":"Minas Gerais",
-	"city":"Belo Horizonte",
-	"zip":"30000","lat":-19.9221,
-	"lon":-43.9347,
-	"timezone":"America/Sao_Paulo",
-	"isp":"Vivo",
-	"org":"TELEF�NICA BRASIL S.A","as":"AS18881 TELEFÔNICA BRASIL S.A",
-	"query":"179.162.174.33"
-}
+ {
+    "ip": "179.162.174.33",
+    "hostname": "179.162.174.33.dynamic.adsl.gvt.net.br",
+    "city": "Belo Horizonte",
+    "region": "Minas Gerais",
+    "country": "BR",
+    "loc": "-19.9208,-43.9378",
+    "org": "AS18881 TELEFÔNICA BRASIL S.A",
+    "postal": "30000-000",
+    "timezone": "America/Sao_Paulo",
+    "readme": "https://ipinfo.io/missingauth"
+  }
  */
 
-internal class IPApiReturn : IIPGeolocationResult
+internal class IPInfoReturn : IIPGeolocationResult
 {
-    [JsonPropertyName("status")]
     public dynamic? Status { get; set; }
 
-    [JsonPropertyName("country")]
     public string? Country { get; set; }
 
-    [JsonPropertyName("countryCode")]
+    [JsonPropertyName("country")]
     public string? CountryCode { get; set; }
 
-    [JsonPropertyName("regionName")]
+    [JsonPropertyName("region")]
     public string? State { get; set; }
 
     [JsonPropertyName("city")]
     public string? City { get; set; }
 
-    [JsonPropertyName("zip")]
+    [JsonPropertyName("postal")]
     public string? Zip { get; set; }
 
-    [JsonPropertyName("lat")]
+    [JsonPropertyName("loc")]
     public dynamic? Latitude { get; set; }
 
-    [JsonPropertyName("lon")]
+    //[JsonPropertyName("loc")]
     public dynamic? Longitude { get; set; }
 
     [JsonPropertyName("timezone")]
     public string? Timezone { get; set; }
 
-    [JsonPropertyName("isp")]
+    [JsonPropertyName("hostname")]
     public string? ISP { get; set; }
 
     [JsonPropertyName("org")]
     public string? Org { get; set; }
 
-    [JsonPropertyName("mobile")]
     public bool? Mobile { get; set; }
 
+    //[Json PropertyName("loc")]
     public string? Others { get; set; }
 
     public DateTime? LastQuery { get; } = DateTime.UtcNow;

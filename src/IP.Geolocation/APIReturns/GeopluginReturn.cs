@@ -3,9 +3,39 @@ using System.Text.Json.Serialization;
 
 namespace IP.Geolocation.APIReturns;
 
+/*
+ * exemple api return
+ * 
+{
+  "geoplugin_request":"179.162.174.33",
+  "geoplugin_status":200,
+  "geoplugin_delay":"2ms",
+  "geoplugin_credit":"Some of the returned data includes GeoLite2 data created by MaxMind, available from <a href='https:\/\/www.maxmind.com'>https:\/\/www.maxmind.com<\/a>.",
+  "geoplugin_city":"Belo Horizonte",
+  "geoplugin_region":"Minas Gerais",
+  "geoplugin_regionCode":"MG",
+  "geoplugin_regionName":"Minas Gerais",
+  "geoplugin_areaCode":"",
+  "geoplugin_dmaCode":"",
+  "geoplugin_countryCode":"BR",
+  "geoplugin_countryName":"Brazil",
+  "geoplugin_inEU":0,
+  "geoplugin_euVATrate":false,
+  "geoplugin_continentCode":"SA",
+  "geoplugin_continentName":"South America",
+  "geoplugin_latitude":"-19.9221",
+  "geoplugin_longitude":"-43.9347",
+  "geoplugin_locationAccuracyRadius":"20",
+  "geoplugin_timezone":"America\/Sao_Paulo",
+  "geoplugin_currencyCode":"BRL",
+  "geoplugin_currencySymbol":"R$",
+  "geoplugin_currencySymbol_UTF8":"R$",
+  "geoplugin_currencyConverter":6.7373
+}
+ */
+
 internal class GeopluginReturn : IIPGeolocationResult
 {
-#pragma warning disable IDE1006 // Naming Styles
     [JsonPropertyName("geoplugin_status")]
     public dynamic? Status { get; set; }
 
@@ -30,26 +60,10 @@ internal class GeopluginReturn : IIPGeolocationResult
     [JsonPropertyName("geoplugin_timezone")]
     public string? Timezone { get; set; }
 
-    public DateTime? LastQuery { get; set; }
-
     public string? Zip { get; set; }
     public string? ISP { get; set; }
     public string? Org { get; set; }
     public bool? Mobile { get; set; }
     public string? Others { get; set; }
-
-    //public string? geoplugin_locationAccuracyRadius { get; set; }
-    //public string? geoplugin_areaCode { get; set; }
-    //public string geoplugin_dmaCode { get; set; }
-    //public string? geoplugin_countryCode { get; set; }
-    //public string geoplugin_inEU { get; set; }
-    //public string geoplugin_euVATrate { get; set; }
-    //public string geoplugin_continentCode { get; set; }
-    //public string? geoplugin_continentName { get; set; }
-    //public string? geoplugin_currencyCode { get; set; }
-    //public string? geoplugin_currencySymbol { get; set; }
-    //public string? geoplugin_currencySymbol_UTF8 { get; set; }
-    //public string? geoplugin_currencyConverter { get; set; }
-
-#pragma warning restore IDE1006 // Naming Styles
+    public DateTime? LastQuery { get; } = DateTime.UtcNow;
 }
