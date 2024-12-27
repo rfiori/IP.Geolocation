@@ -6,7 +6,7 @@ namespace IP.Geolocation
 {
     public partial class FindIP
     {
-        private async static Task<IIPGeolocationResult?> getFromIPInfoAsync(string ip, int timeOut = TIMEOUT_MILESSEC)
+        private async Task<IIPGeolocationResult?> getFromIPInfoAsync(string ip, int timeOut = TIMEOUT_MILESSEC)
         {
             // api https://ipinfo.io/8.8.8.8/json
             const string API_Geoplugin_URL = "https://ipinfo.io";

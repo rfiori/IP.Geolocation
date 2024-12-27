@@ -1,5 +1,6 @@
 ﻿using IP.Geolocation.APIReturns;
 using IP.Geolocation.Interfaces;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
 
 namespace IP.Geolocation;
@@ -8,7 +9,7 @@ public partial class FindIP
 {
     // api http://www.ip-api.com
     const string API_IpApi_URL = "http://ip-api.com/json/";
-    private static async Task<IIPGeolocationResult?> Get_IPAPI_Async(string ip, int timeOut = TIMEOUT_MILESSEC)
+    private async Task<IIPGeolocationResult?> Get_IPAPI_Async(string ip, int timeOut = TIMEOUT_MILESSEC)
     {
         try
         {
