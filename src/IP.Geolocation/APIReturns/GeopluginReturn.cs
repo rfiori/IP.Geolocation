@@ -36,8 +36,15 @@ namespace IP.Geolocation.APIReturns;
 
 internal class GeopluginReturn : IIPGeolocationResult
 {
+    string? _status;
+
     [JsonPropertyName("geoplugin_status")]
-    public dynamic? Status { get; set; }
+    [JsonConverter(typeof(StringOrIntConverter))]
+    public string? Status
+    {
+        get => _status;
+        set => _status = value! == "200" ? "success" : value;
+    }
 
     [JsonPropertyName("geoplugin_city")]
     public string? City { get; set; }

@@ -22,9 +22,14 @@ namespace IP.Geolocation.APIReturns;
 
 internal class IPInfoReturn : IIPGeolocationResult
 {
-    public dynamic? Status { get; set; }
+    string? _status;
 
-    public string? Country { get; set; }
+
+    public string? Status
+    {
+        get => _status;
+        set => _status = CountryCode?.Length > 0 ? "sucess" : null;
+    }
 
     [JsonPropertyName("country")]
     public string? CountryCode { get; set; }
@@ -41,9 +46,6 @@ internal class IPInfoReturn : IIPGeolocationResult
     [JsonPropertyName("loc")]
     public dynamic? Latitude { get; set; }
 
-    //[JsonPropertyName("loc")]
-    public dynamic? Longitude { get; set; }
-
     [JsonPropertyName("timezone")]
     public string? Timezone { get; set; }
 
@@ -53,10 +55,9 @@ internal class IPInfoReturn : IIPGeolocationResult
     [JsonPropertyName("org")]
     public string? Org { get; set; }
 
+    public dynamic? Longitude { get; set; }
+    public string? Country { get; set; }
     public bool? Mobile { get; set; }
-
-    //[Json PropertyName("loc")]
     public string? Others { get; set; }
-
     public DateTime? LastQuery { get; } = DateTime.UtcNow;
 }

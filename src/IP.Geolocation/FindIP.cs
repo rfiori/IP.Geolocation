@@ -1,5 +1,4 @@
 ﻿using IP.Geolocation.Interfaces;
-using IP.Geolocation.Results;
 using System.Net.Http.Headers;
 
 namespace IP.Geolocation;

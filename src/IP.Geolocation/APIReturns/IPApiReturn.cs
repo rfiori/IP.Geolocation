@@ -25,7 +25,8 @@ namespace IP.Geolocation.APIReturns;
 internal class IPApiReturn : IIPGeolocationResult
 {
     [JsonPropertyName("status")]
-    public dynamic? Status { get; set; }
+    [JsonConverter(typeof(StringOrIntConverter))]
+    public string? Status { get; set; }
 
     [JsonPropertyName("country")]
     public string? Country { get; set; }

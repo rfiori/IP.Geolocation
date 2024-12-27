@@ -14,10 +14,7 @@ namespace IP.Geolocation
             {
                 var content = await CallAPI($"{API_Geoplugin_URL}/{ip}/json");
                 if (!string.IsNullOrEmpty(content))
-                {
-                    var geoP_ret = JsonSerializer.Deserialize<IPInfoReturn>(content);
-                    return geoP_ret;
-                }
+                    return JsonSerializer.Deserialize<IPInfoReturn>(content);
                 else
                     return null;
             }

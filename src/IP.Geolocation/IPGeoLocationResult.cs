@@ -1,10 +1,10 @@
 ﻿using IP.Geolocation.Interfaces;
 
-namespace IP.Geolocation.Results;
+namespace IP.Geolocation;
 
 public class IPGeoLocationResult : IIPGeolocationResult
 {
-    public dynamic? Status { get; set; }
+    public string? Status { get; set; }
     public DateTime? LastQuery { get; set; }
     public string? Country { get; set; }
     public string? CountryCode { get; set; }

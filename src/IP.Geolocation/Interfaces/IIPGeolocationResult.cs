@@ -2,7 +2,7 @@
 
 public interface IIPGeolocationResult
 {
-    public dynamic? Status { get; }
+    public string? Status { get; }
 
     public DateTime? LastQuery { get; }
 
