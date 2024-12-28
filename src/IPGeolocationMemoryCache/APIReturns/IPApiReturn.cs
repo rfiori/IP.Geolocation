@@ -63,5 +63,8 @@ internal class IPApiReturn : IIPGeolocationResult
 
 	public string? Others { get; set; }
 
+	/// <summary>
+	/// Last query UTC date time
+	/// </summary>
 	public DateTime? LastQuery { get; } = DateTime.UtcNow;
 }

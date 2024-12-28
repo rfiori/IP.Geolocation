@@ -67,10 +67,15 @@ internal class GeopluginReturn : IIPGeolocationResult
 	[JsonPropertyName("geoplugin_timezone")]
 	public string? Timezone { get; set; }
 
+	/// <summary>
+	/// Last query UTC date time
+	/// </summary>
+	public DateTime? LastQuery { get; } = DateTime.UtcNow;
+	
 	public string? Zip { get; set; }
 	public string? ISP { get; set; }
 	public string? Org { get; set; }
 	public bool? Mobile { get; set; }
 	public string? Others { get; set; }
-	public DateTime? LastQuery { get; } = DateTime.UtcNow;
+
 }

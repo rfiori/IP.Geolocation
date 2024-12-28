@@ -5,7 +5,6 @@ namespace IPGeolocationMemoryCache;
 public class IPGeoLocationResult : IIPGeolocationResult
 {
 	public string? Status { get; set; }
-	public DateTime? LastQuery { get; set; }
 	public string? Country { get; set; }
 	public string? CountryCode { get; set; }
 	public string? State { get; set; }
@@ -18,4 +17,9 @@ public class IPGeoLocationResult : IIPGeolocationResult
 	public string? Org { get; set; }
 	public bool? Mobile { get; set; }
 	public string? Others { get; set; }
+
+	/// <summary>
+	/// Last query UTC date time
+	/// </summary>
+	public DateTime? LastQuery { get; set; }
 }

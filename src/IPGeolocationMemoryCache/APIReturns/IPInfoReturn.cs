@@ -48,11 +48,15 @@ internal class IPInfoReturn : IIPGeolocationResult
 	[JsonPropertyName("org")]
 	public string? Org { get; set; }
 
+	/// <summary>
+	/// Last query UTC date time
+	/// </summary>
+	public DateTime? LastQuery { get; } = DateTime.UtcNow;
+
 	public dynamic? Longitude { get; set; }
 	public string? Country { get; set; }
 	public bool? Mobile { get; set; }
 	public string? Others { get; set; }
-	public DateTime? LastQuery { get; } = DateTime.UtcNow;
 
 	private string? GetStatus() => !string.IsNullOrEmpty(CountryCode) ? "success" : null;
 }
