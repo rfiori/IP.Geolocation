@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Authors>Ricardo Machado</Authors>
+		<Nullable>enable</Nullable>
+		<Version>1.9.0.0</Version>
+		<Title>IPGeolocationMemoryCache</Title>
+		<Description>Uses the IP to search for IP geolocation information and save in memory cache.</Description>
+		<Copyright>IPGeolocationMemoryCache</Copyright>
+		<PackageProjectUrl>https://github.com/rfiori/IPGeolocationMemoryCache</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/rfiori/IPGeolocationMemoryCache</RepositoryUrl>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<ApplicationIcon>icon.ico</ApplicationIcon>
+		<PackageTags>ip, geolocation</PackageTags>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Content Include="icon.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Include="..\..\LICENSE">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Include="..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.0" />
+	</ItemGroup>
+
+</Project>
