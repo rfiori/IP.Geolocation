@@ -36,41 +36,41 @@ namespace IP.Geolocation.APIReturns;
 
 internal class GeopluginReturn : IIPGeolocationResult
 {
-    string? _status;
+	string? _status;
 
-    [JsonPropertyName("geoplugin_status")]
-    [JsonConverter(typeof(StringOrIntConverter))]
-    public string? Status
-    {
-        get => _status;
-        set => _status = value! == "200" ? "success" : value;
-    }
+	[JsonPropertyName("geoplugin_status")]
+	[JsonConverter(typeof(StringOrIntConverter))]
+	public string? Status
+	{
+		get => _status;
+		set => _status = value! == "200" ? "success" : value;
+	}
 
-    [JsonPropertyName("geoplugin_city")]
-    public string? City { get; set; }
+	[JsonPropertyName("geoplugin_city")]
+	public string? City { get; set; }
 
-    [JsonPropertyName("geoplugin_regionName")]
-    public string? State { get; set; }
+	[JsonPropertyName("geoplugin_regionName")]
+	public string? State { get; set; }
 
-    [JsonPropertyName("geoplugin_countryCode")]
-    public string? CountryCode { get; set; }
+	[JsonPropertyName("geoplugin_countryCode")]
+	public string? CountryCode { get; set; }
 
-    [JsonPropertyName("geoplugin_countryName")]
-    public string? Country { get; set; }
+	[JsonPropertyName("geoplugin_countryName")]
+	public string? Country { get; set; }
 
-    [JsonPropertyName("geoplugin_latitude")]
-    public dynamic? Latitude { get; set; }
+	[JsonPropertyName("geoplugin_latitude")]
+	public dynamic? Latitude { get; set; }
 
-    [JsonPropertyName("geoplugin_longitude")]
-    public dynamic? Longitude { get; set; }
+	[JsonPropertyName("geoplugin_longitude")]
+	public dynamic? Longitude { get; set; }
 
-    [JsonPropertyName("geoplugin_timezone")]
-    public string? Timezone { get; set; }
+	[JsonPropertyName("geoplugin_timezone")]
+	public string? Timezone { get; set; }
 
-    public string? Zip { get; set; }
-    public string? ISP { get; set; }
-    public string? Org { get; set; }
-    public bool? Mobile { get; set; }
-    public string? Others { get; set; }
-    public DateTime? LastQuery { get; } = DateTime.UtcNow;
+	public string? Zip { get; set; }
+	public string? ISP { get; set; }
+	public string? Org { get; set; }
+	public bool? Mobile { get; set; }
+	public string? Others { get; set; }
+	public DateTime? LastQuery { get; } = DateTime.UtcNow;
 }

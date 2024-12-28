@@ -22,42 +22,39 @@ namespace IP.Geolocation.APIReturns;
 
 internal class IPInfoReturn : IIPGeolocationResult
 {
-    string? _status;
+	string? _status;
 
+	public string? Status { get => GetStatus(); }
 
-    public string? Status
-    {
-        get => _status;
-        set => _status = CountryCode?.Length > 0 ? "sucess" : null;
-    }
+	[JsonPropertyName("country")]
+	public string? CountryCode { get; set; }
 
-    [JsonPropertyName("country")]
-    public string? CountryCode { get; set; }
+	[JsonPropertyName("region")]
+	public string? State { get; set; }
 
-    [JsonPropertyName("region")]
-    public string? State { get; set; }
+	[JsonPropertyName("city")]
+	public string? City { get; set; }
 
-    [JsonPropertyName("city")]
-    public string? City { get; set; }
+	[JsonPropertyName("postal")]
+	public string? Zip { get; set; }
 
-    [JsonPropertyName("postal")]
-    public string? Zip { get; set; }
+	[JsonPropertyName("loc")]
+	public dynamic? Latitude { get; set; }
 
-    [JsonPropertyName("loc")]
-    public dynamic? Latitude { get; set; }
+	[JsonPropertyName("timezone")]
+	public string? Timezone { get; set; }
 
-    [JsonPropertyName("timezone")]
-    public string? Timezone { get; set; }
+	[JsonPropertyName("hostname")]
+	public string? ISP { get; set; }
 
-    [JsonPropertyName("hostname")]
-    public string? ISP { get; set; }
+	[JsonPropertyName("org")]
+	public string? Org { get; set; }
 
-    [JsonPropertyName("org")]
-    public string? Org { get; set; }
+	public dynamic? Longitude { get; set; }
+	public string? Country { get; set; }
+	public bool? Mobile { get; set; }
+	public string? Others { get; set; }
+	public DateTime? LastQuery { get; } = DateTime.UtcNow;
 
-    public dynamic? Longitude { get; set; }
-    public string? Country { get; set; }
-    public bool? Mobile { get; set; }
-    public string? Others { get; set; }
-    public DateTime? LastQuery { get; } = DateTime.UtcNow;
+	private string? GetStatus() => !string.IsNullOrEmpty(CountryCode) ? "success" : null;
 }
