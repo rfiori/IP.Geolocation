@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net9.0</TargetFramework>
@@ -8,25 +9,34 @@
 		<Version>1.9.0.0</Version>
 		<Title>IPGeolocationMemoryCache</Title>
 		<Description>Uses the IP to search for IP geolocation information and save in memory cache.</Description>
-		<Copyright>IPGeolocationMemoryCache</Copyright>
+		<Copyright>Copyright 2024 - Ricardo Machado</Copyright>
 		<PackageProjectUrl>https://github.com/rfiori/IPGeolocationMemoryCache</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/rfiori/IPGeolocationMemoryCache</RepositoryUrl>
-		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<ApplicationIcon>icon.ico</ApplicationIcon>
+		<ApplicationIcon>logo256.ico</ApplicationIcon>
 		<PackageTags>ip, geolocation</PackageTags>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageIcon>logo256.png</PackageIcon>
+		<PackageOutputPath>$(OutputPath)\pack\</PackageOutputPath>
+		<IncludeSymbols>True</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Content Include="icon.ico" />
+	  <Content Include="logo256.ico" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Include="..\..\img\logo256.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
 	  <None Include="..\..\LICENSE">
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
 	  </None>
-	  <None Include="..\README.md">
+	  <None Include="..\..\README.md">
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
 	  </None>

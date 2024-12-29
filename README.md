@@ -1,3 +1,6 @@
+[![NuGet](https://img.shields.io/nuget/v/IPGeolocationMemoryCache.svg)](https://www.nuget.org/packages/IPGeolocationMemoryCache)
+![Nuget](https://img.shields.io/nuget/dt/IPGeolocationMemoryCache.svg)
+
 # IPGeolocationMemoryCache
 
 IPGeolocationMemoryCache is a lightweight and efficient library designed to resolve the geolocation of an IP address using free API services. It solves the challenge of repeated API calls for high-traffic applications by caching the resolved geolocation data in memory for 10 minutes (configurable). 
@@ -5,6 +8,7 @@ IPGeolocationMemoryCache is a lightweight and efficient library designed to reso
 By utilizing this library, you can reduce API request overhead and improve the performance of your application when dealing with frequent IP geolocation lookups. It is ideal for scenarios where geolocation data is critical but maintaining low latency is equally important.
 
 IPGeolocationMemoryCache is available using [nuget](https://www.nuget.org/packages/IPGeolocationMemoryCache). To install IPGeolocationMemoryCache, run the following command in the Package Manager Console 
+
 ```csharp
 Install-Package IPGeolocationMemoryCache
 ```
