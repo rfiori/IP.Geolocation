@@ -4,6 +4,12 @@ IPGeolocationMemoryCache is a lightweight and efficient library designed to reso
 
 By utilizing this library, you can reduce API request overhead and improve the performance of your application when dealing with frequent IP geolocation lookups. It is ideal for scenarios where geolocation data is critical but maintaining low latency is equally important.
 
+IPGeolocationMemoryCache is available using [nuget](https://www.nuget.org/packages/IPGeolocationMemoryCache). To install IPGeolocationMemoryCache, run the following command in the Package Manager Console 
+```csharp
+Install-Package IPGeolocationMemoryCache
+```
+https://www.nuget.org/packages/IPGeolocationMemoryCache
+
 ---
 
 ## Key Features
@@ -44,4 +50,52 @@ By utilizing this library, you can reduce API request overhead and improve the p
 
 ---
 
+## Interface result IIPGeolocationResult
+```csharp
+// All result implement the IIPGeolocationResult
+public interface IIPGeolocationResult
+{
+   public string? Status { get; }
+   public DateTime? LastQuery { get; }
+   public string? Country { get; }
+   public string? CountryCode { get; }
+   public string? State { get; }
+   public string? City { get; }
+   public string? Zip { get; }
+   public dynamic? Latitude { get; }
+   public dynamic? Longitude { get; }
+   public string? Timezone { get; }
+   public string? ISP { get; }
+   public string? Org { get; }
+   public bool? Mobile { get; }
+   public string? Others { get; }
+}
+```
+
+## Sample code
+```csharp
+using Microsoft.Extensions.Caching.Memory;
+
+// It is not mandatory to use the constructor with MemoryCache.
+// But not using it may result in higher latency in API calls and there may be more queries than the free services allow.
+public class IpInfo
+{
+   public void GetIPGeo()
+   {
+      var _cache = new MemoryCache(new MemoryCacheOptions());
+      var fIP = new FindIP(_cache);
+      var ips = new List<string> { "179.162.174.33", "35.208.27.10", "18.217.72.66", "35.208.27.10", "179.162.174.33" };
+      var lstResult = new List<IIPGeolocationResult?>();
+      foreach (var item in ips)
+      {
+         lstResult.Add(fIP.GetIPGeolocationAsync(item).Result);
+         Task.Delay(3000); // To simulate external processing.
+      }
+      Console.WriteLine($"1th coutry = {lstResult[0]?.Country} | 5th coutry = {lstResult[4]?.Country}");
+      Console.WriteLine($"2th coutry = {lstResult[2]?.Country} | 4th coutry = {lstResult[3]?.Country}");
+   }
+}
+```
+
+---
 Start using IPGeolocationMemoryCache today to enhance your application's geolocation capabilities while maintaining efficiency and performance!
