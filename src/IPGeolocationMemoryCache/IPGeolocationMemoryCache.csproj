@@ -6,7 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Authors>Ricardo Machado</Authors>
 		<Nullable>enable</Nullable>
-		<Version>1.9.0.0</Version>
+		<Version>1.9.0.1</Version>
 		<Title>IPGeolocationMemoryCache</Title>
 		<Description>Uses the IP to search for IP geolocation information and save in memory cache.</Description>
 		<Copyright>Copyright 2024 - Ricardo Machado</Copyright>
@@ -17,9 +17,6 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageIcon>logo256.png</PackageIcon>
-		<PackageOutputPath>$(OutputPath)\pack\</PackageOutputPath>
-		<IncludeSymbols>True</IncludeSymbols>
-		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 	</PropertyGroup>
 
