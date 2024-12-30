@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace IPGeolocationMemoryCache
 {
-	public partial class FindIP
+	public partial class IpGeoLocation
 	{
 		//--- site http://www.ip-api.com
 		const string IpApi_URL = "http://ip-api.com/json/";

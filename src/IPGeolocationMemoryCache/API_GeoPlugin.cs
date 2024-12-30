@@ -4,7 +4,7 @@ using System.Text.Json;
 
 namespace IPGeolocationMemoryCache
 {
-	public partial class FindIP
+	public partial class IpGeoLocation
 	{
 		private async Task<IIPGeolocationResult?> GetGeopluginAsync(string ip, int timeOut = TIMEOUT_MILESSEC)
 		{

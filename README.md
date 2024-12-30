@@ -1,7 +1,5 @@
-[![NuGet](https://img.shields.io/nuget/v/IPGeolocationMemoryCache.svg)](https://www.nuget.org/packages/IPGeolocationMemoryCache)
-![Nuget](https://img.shields.io/nuget/dt/IPGeolocationMemoryCache.svg)
-
-# IPGeolocationMemoryCache
+## IPGeolocationMemoryCache
+[![NuGet](https://img.shields.io/nuget/v/IPGeolocationMemoryCache.svg)](https://www.nuget.org/packages/IPGeolocationMemoryCache) ![Nuget](https://img.shields.io/nuget/dt/IPGeolocationMemoryCache.svg)
 
 IPGeolocationMemoryCache is a lightweight and efficient library designed to resolve the geolocation of an IP address using free API services. It solves the challenge of repeated API calls for high-traffic applications by caching the resolved geolocation data in memory for 10 minutes (configurable). 
 
@@ -16,7 +14,7 @@ https://www.nuget.org/packages/IPGeolocationMemoryCache
 
 ---
 
-## Key Features
+### Key Features
 
 - **Free API Services Integration**: Supports free IP geolocation APIs to fetch location data.
 - **Memory Cache**: Geolocation results are cached in memory, minimizing redundant API calls.
@@ -26,7 +24,7 @@ https://www.nuget.org/packages/IPGeolocationMemoryCache
 
 ---
 
-## Use Cases
+### Use Cases
 
 - **Web Applications**: Enhance user experiences by delivering location-based services.
 - **Traffic Analytics**: Collect and analyze geographical data for visitor IPs efficiently.
@@ -35,7 +33,7 @@ https://www.nuget.org/packages/IPGeolocationMemoryCache
 
 ---
 
-## How It Works
+### How It Works
 
 1. When a request is made to resolve an IP address:
    - The library first checks the in-memory cache for existing geolocation data.
@@ -45,7 +43,7 @@ https://www.nuget.org/packages/IPGeolocationMemoryCache
 
 ---
 
-## Why Choose IPGeolocationMemoryCache?
+### Why Choose IPGeolocationMemoryCache?
 
 - **Performance Optimization**: Significantly reduces latency for geolocation queries by leveraging memory caching.
 - **Cost-Effective**: Takes advantage of free geolocation APIs to eliminate additional costs.
@@ -54,7 +52,7 @@ https://www.nuget.org/packages/IPGeolocationMemoryCache
 
 ---
 
-## Interface result IIPGeolocationResult
+### Interface result IIPGeolocationResult
 ```csharp
 // All result implement the IIPGeolocationResult
 public interface IIPGeolocationResult
@@ -72,11 +70,57 @@ public interface IIPGeolocationResult
    public string? ISP { get; }
    public string? Org { get; }
    public bool? Mobile { get; }
-   public string? Others { get; }
+   public string? Others { get; set;}
 }
 ```
 
-## Sample code
+### Sample code
+#### MemoryCache management always be done by the main application so that the cache maintained in the global context of the application.
+
+In Program.cs add MemoryCache ServiceCollection
+```csharp
+builder.Services.AddMemoryCache();
+```
+
+Create new instance of IPGeolocationMemoryCache.IpGeoLocation() with MemoryCache
+```csharp
+using IPGeolocationMemoryCache;
+using Microsoft.Extensions.Caching.Memory;
+
+public class IpLog
+{
+    private readonly ILogger<IpLog> _logger;
+    private readonly IMemoryCache _cache;
+
+    public IpLog(ILogger<IpLog> log, IMemoryCache memoryCache)
+    {
+        _logger = log;
+        _cache = memoryCache;
+    }
+
+    public void LogIPInfo()
+    {
+        string Ip = "179.162.174.33";
+        string host = "somehost.com";
+        var ipGL = new IpGeoLocation(_cache);
+        var ipInfo = ipGL.GetIPGeolocationAsync(Ip).Result;
+        var content = @$"
+            Host: {host} | 
+            {ipInfo.Country} -
+            {ipInfo.CountryCode} - 
+            {ipInfo.State} - 
+            {ipInfo.City} - 
+            {ipInfo.ISP} - 
+            {ipInfo.Org}";
+
+        _logger.LogInformation(content.Trim());
+        Console.WriteLine($"{content.Trim()}");
+    }
+}
+
+```
+
+### Sample code local use
 ```csharp
 using Microsoft.Extensions.Caching.Memory;
 
@@ -86,17 +130,17 @@ public class IpInfo
 {
    public void GetIPGeo()
    {
-      var _cache = new MemoryCache(new MemoryCacheOptions());
-      var fIP = new FindIP(_cache);
-      var ips = new List<string> { "179.162.174.33", "35.208.27.10", "18.217.72.66", "35.208.27.10", "179.162.174.33" };
-      var lstResult = new List<IIPGeolocationResult?>();
-      foreach (var item in ips)
-      {
-         lstResult.Add(fIP.GetIPGeolocationAsync(item).Result);
-         Task.Delay(3000); // To simulate external processing.
-      }
-      Console.WriteLine($"1th coutry = {lstResult[0]?.Country} | 5th coutry = {lstResult[4]?.Country}");
-      Console.WriteLine($"2th coutry = {lstResult[2]?.Country} | 4th coutry = {lstResult[3]?.Country}");
+		var _cache = new MemoryCache(new MemoryCacheOptions());
+		var ipGeo = new IpGeoLocation(_cache);
+		var lstIp = new List<string> { "179.162.174.33", "35.208.27.10", "18.217.72.66", "35.208.27.10", "179.162.174.33" };
+		var lstResult = new List<IIPGeolocationResult?>();
+		foreach (var item in lstIp)
+		{
+			lstResult.Add(ipGeo.GetIPGeolocationAsync(item).Result);
+			Task.Delay(3000);
+		}
+		Console.WriteLine($"1th coutry = {lstResult[0]?.Country} | 5th coutry = {lstResult[4]?.Country}");
+		Console.WriteLine($"2th coutry = {lstResult[2]?.Country} | 4th coutry = {lstResult[3]?.Country}");
    }
 }
 ```

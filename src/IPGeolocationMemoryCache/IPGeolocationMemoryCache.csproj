@@ -6,23 +6,18 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Authors>Ricardo Machado</Authors>
 		<Nullable>enable</Nullable>
-		<Version>1.9.0.1</Version>
+		<Version>1.9.1.0</Version>
 		<Title>IPGeolocationMemoryCache</Title>
-		<Description>Uses the IP to search for IP geolocation information and save in memory cache.</Description>
+		<Description>Uses IP to look up geolocation information and save it in MemoryCache for faster queries.</Description>
 		<Copyright>Copyright 2024 - Ricardo Machado</Copyright>
 		<PackageProjectUrl>https://github.com/rfiori/IPGeolocationMemoryCache</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/rfiori/IPGeolocationMemoryCache</RepositoryUrl>
-		<ApplicationIcon>logo256.ico</ApplicationIcon>
-		<PackageTags>ip, geolocation</PackageTags>
+		<PackageTags>IP, Geolocation, Speed , In-memory, IMemoryCache, Cache</PackageTags>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageIcon>logo256.png</PackageIcon>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <Content Include="logo256.ico" />
-	</ItemGroup>
 
 	<ItemGroup>
 	  <None Include="..\..\img\logo256.png">

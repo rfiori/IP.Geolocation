@@ -6,7 +6,7 @@ using System.Text.Json;
 namespace IPGeolocationMemoryCache;
 
 //------------------------------------------------------------------------//
-// Some API to find geolocation
+// Some IP API to find geolocation
 // http://www.ip-api.com
 // http://www.geoplugin.net
 // https://ipinfo.io
@@ -16,7 +16,7 @@ namespace IPGeolocationMemoryCache;
 // https://console.hgbrasil.com/documentation/geoip Need API Key
 //------------------------------------------------------------------------//
 
-public partial class FindIP
+public partial class IpGeoLocation
 {
 	const int TIMEOUT_SEC = 2;
 	const int TIMEOUT_MILESSEC = TIMEOUT_SEC * 1000;
@@ -32,7 +32,7 @@ public partial class FindIP
 	/// </summary>
 	/// <param name="memoryCache">Obj MemoryCache to use for cache IP data.</param>
 	/// <param name="cacheExpirationInMinutes">Cache expiration em minutes. Default 10 minutes to expire.</param>
-	public FindIP(IMemoryCache? memoryCache, int cacheExpirationInMinutes = 10)
+	public IpGeoLocation(IMemoryCache? memoryCache, int cacheExpirationInMinutes = 10)
 	{
 		_cache = memoryCache;
 		_timeExpiration = TimeSpan.FromMinutes(cacheExpirationInMinutes);
